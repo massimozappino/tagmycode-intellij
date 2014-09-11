@@ -1,0 +1,56 @@
+<idea-plugin version="2">
+    <id>com.tagmycode.intellij</id>
+    <name>TagMyCode</name>
+    <version>1.0</version>
+    <vendor email="support@tagmycode.com" url="http://tagmycode.com">TagMyCode</vendor>
+
+    <description><![CDATA[
+      Provides the support for TagMyCode.<br/>
+      This plugin allows you to create your own snippets. You can save your code snippets including description, language, and tags.
+      ]]></description>
+
+    <change-notes><![CDATA[
+            ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="133.696"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+
+    <depends>com.intellij.modules.lang</depends>
+
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+        <component>
+            <implementation-class>com.tagmycode.intellij.TagMyCodeProject</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="createSnippet" class="com.tagmycode.intellij.CreateSnippetAction" text="Create snippet..."
+                description="Create a new snippet based on current opened file" icon="icons/create16.png">
+            <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="OpenInSceneBuilder"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt T"/>
+        </action>
+        <action id="searchSnippetsAction" class="com.tagmycode.intellij.SearchSnippetsAction" text="Search snippets..."
+                description="Search snippets" icon="icons/search16.png">
+            <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="OpenInSceneBuilder"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift SPACE"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable instance="com.tagmycode.intellij.settings.TagMyCodeConfigurable"/>
+        <toolWindow id="TagMyCode" icon="icons/tagmycode13.png" anchor="bottom"
+                    factoryClass="com.tagmycode.intellij.MainWindow">
+        </toolWindow>
+    </extensions>
+</idea-plugin>
