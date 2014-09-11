@@ -14,7 +14,7 @@ It works also on others JetBrains IDEs:
 ### Dependencies###
 To download all dependencies use Maven
 
-```
+```bash
 mvn clean package
 ```
 
@@ -23,7 +23,7 @@ this command download all required languages into lib folder
 ###Consumer Id and Consumer secret###
 You need to create a Java class Secret.java into plugin/com/tagmycode/intellij/secret
 
-```
+```java
 package com.tagmycode.intellij.secret;
 
 public class Secret extends AbstractSecret {
