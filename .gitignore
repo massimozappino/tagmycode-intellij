@@ -1,3 +1,7 @@
+.idea
+Secret.java
+lib
+out
 target/
 pom.xml.tag
 pom.xml.releaseBackup
