@@ -21,13 +21,14 @@ mvn clean package
 this command download all required languages into lib folder
 
 ###Consumer Id and Consumer secret###
-You need to create a Java class Secret.java into plugin/com/tagmycode/intellij/secret
+You need to create a Java class Secret.java into plugin/com/tagmycode/intellij
 
 ```java
-package com.tagmycode.intellij.secret;
+package com.tagmycode.intellij;
+
+import com.tagmycode.plugin.AbstractSecret;
 
 public class Secret extends AbstractSecret {
-
     @Override
     public String getConsumerId() {
         return "YOUR_CONSUMER_ID";
