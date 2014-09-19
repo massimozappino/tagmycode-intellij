@@ -1,5 +1,6 @@
 .DS_Store
-.idea
+.idea/workspace.xml
+.idea/copyright
 Secret.java
 lib
 out
