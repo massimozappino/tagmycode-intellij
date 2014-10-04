@@ -12,7 +12,7 @@
         <dependency>
             <groupId>com.tagmycode</groupId>
             <artifactId>tagmycode-plugin-framework</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.2</version>
         </dependency>
     </dependencies>
 
