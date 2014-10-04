@@ -5,12 +5,25 @@
     <vendor email="support@tagmycode.com" url="http://tagmycode.com">TagMyCode</vendor>
 
     <description><![CDATA[
-      Provides the support for TagMyCode.<br/>
-      This plugin allows you to create your own snippets. You can save your code snippets including description, language, and tags.
-      ]]></description>
+    Provides the support for TagMyCode.<br/>
+    This plugin allows you to create your own snippets.<br/>
+    <br/>
+    Features:<br/>
+    * Create Snippets: you can save your code snippets including description, language, and tags<br/>
+    * Search Snippets: you can search your saved snippets and insert them directly into the document<br/>
+    ]]>
+    </description>
 
     <change-notes><![CDATA[
-            ]]>
+    1.1 (released 2014-10-04)<br/>
+    * Switched authentication from OAuth 1.0a to OAuth 2<br/>
+    * Console write also snippet title when new snippet is created (thanks to bejoy)<br/>
+    * Fixed some minor bugs<br/>
+    <br/>
+    1.0 (released 2014-08-19)<br/>
+    * Added "Create snippet" feature
+    * Added "Search snippets" feature<br/>
+    ]]>
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
