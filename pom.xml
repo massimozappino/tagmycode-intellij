@@ -12,7 +12,7 @@
         <dependency>
             <groupId>com.tagmycode</groupId>
             <artifactId>tagmycode-plugin-framework</artifactId>
-            <version>0.2</version>
+            <version>0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -30,7 +30,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>
-                                lib
+                                ${project.build.directory}/lib
                             </outputDirectory>
                         </configuration>
                     </execution>
