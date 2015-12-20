@@ -11,7 +11,6 @@ import javax.swing.*;
 
 public class MainWindow implements ToolWindowFactory {
     private JPanel mainPanel;
-    private JEditorPane editorPane;
 
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
