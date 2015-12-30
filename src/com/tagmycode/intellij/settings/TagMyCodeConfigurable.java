@@ -4,7 +4,7 @@ import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.tagmycode.intellij.IntelliJUtils;
 import com.tagmycode.intellij.TagMyCodeProject;
-import com.tagmycode.plugin.gui.SettingsForm;
+import com.tagmycode.plugin.gui.form.SettingsForm;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;

@@ -31,7 +31,7 @@ public class TagMyCodeProject implements ProjectComponent {
     }
 
     private void initFramework() {
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), new Preferences(), new MessageManager(project), new TaskFactory(this), getMainFrame());
+        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), new Storage(), new MessageManager(project), new TaskFactory(this), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
     }
 

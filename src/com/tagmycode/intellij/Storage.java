@@ -2,13 +2,13 @@ package com.tagmycode.intellij;
 
 
 import com.intellij.ide.util.PropertiesComponent;
-import com.tagmycode.plugin.AbstractPreferences;
+import com.tagmycode.plugin.AbstractStorage;
 
-public class Preferences extends AbstractPreferences {
+public class Storage extends AbstractStorage {
 
     private final PropertiesComponent propertiesComponent;
 
-    public Preferences()
+    public Storage()
     {
         this.propertiesComponent = PropertiesComponent.getInstance();
     }
