@@ -18,7 +18,7 @@ public final class TagMyCodeConfigurable implements Configurable {
     public TagMyCodeConfigurable(Project project) {
         TagMyCodeProject tagMyCodeProject = IntelliJUtils.getTagMyCodeProject(project);
 
-        mainPanel = new SettingsForm(tagMyCodeProject.getFramework()).getMainPanel();
+        mainPanel = (JPanel) new SettingsForm(tagMyCodeProject.getFramework()).getMainComponent();
     }
 
     @Override

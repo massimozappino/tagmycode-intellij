@@ -6,18 +6,16 @@ import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.tagmycode.plugin.Framework;
+import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
 
 public class MainWindow implements ToolWindowFactory {
-    private JPanel mainPanel;
-
     @Override
-    public void createToolWindowContent(Project project, ToolWindow toolWindow) {
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         Framework framework = IntelliJUtils.getTagMyCodeProject(project).getFramework();
 
         ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
-        Content content = contentFactory.createContent(framework.getMainWindow().getMainPanel(), "", false);
+        Content content = contentFactory.createContent(framework.getMainWindow().getMainComponent(), "", false);
         toolWindow.getContentManager().addContent(content);
     }
 }
