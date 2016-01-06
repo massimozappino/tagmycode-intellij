@@ -2,9 +2,9 @@ package com.tagmycode.intellij;
 
 
 import com.intellij.ide.util.PropertiesComponent;
-import com.tagmycode.plugin.AbstractStorage;
+import com.tagmycode.plugin.IStorage;
 
-public class Storage extends AbstractStorage {
+public class Storage implements IStorage {
 
     private final PropertiesComponent propertiesComponent;
 
@@ -14,17 +14,17 @@ public class Storage extends AbstractStorage {
     }
 
     @Override
-    protected String read(String s) {
+    public String read(String s) {
         return propertiesComponent.getValue(s, "");
     }
 
     @Override
-    protected void write(String key, String value) {
+    public void write(String key, String value) {
         propertiesComponent.setValue(key, value);
     }
 
     @Override
-    protected void unset(String s) {
+    public void unset(String s) {
         propertiesComponent.unsetValue(s);
     }
 

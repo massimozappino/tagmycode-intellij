@@ -26,8 +26,7 @@ public class CreateSnippetAction extends AnAction {
         assert editor != null;
         snippet.setTitle(getFile(editor.getDocument()).getName());
         snippet.setCode(getCode(editor));
-        String mimeType = "text/plain";
-        tagMyCodeProject.getFramework().showSnippetDialog(snippet, mimeType);
+        tagMyCodeProject.getFramework().showSnippetDialog(snippet, null);
     }
 
     private VirtualFile getFile(Document document) {
