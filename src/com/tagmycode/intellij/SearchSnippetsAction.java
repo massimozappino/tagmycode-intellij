@@ -25,7 +25,7 @@ public class SearchSnippetsAction extends AnAction {
         if (editor != null) {
             documentUpdate = createDocumentUpdate(project, editor);
         }
-        tagMyCodeProject.getFramework().showSearchDialog(documentUpdate);
+       // tagMyCodeProject.getFramework().showSearchDialog(documentUpdate);
     }
 
     private IDocumentInsertText createDocumentUpdate(final Project project, final Editor editor) {
