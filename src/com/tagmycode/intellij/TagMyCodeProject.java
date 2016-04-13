@@ -22,8 +22,7 @@ public class TagMyCodeProject implements ProjectComponent {
     public void initComponent() {
     }
 
-    public Framework getFramework()
-    {
+    public Framework getFramework() {
         if (framework == null) {
             initFramework();
         }
@@ -33,6 +32,7 @@ public class TagMyCodeProject implements ProjectComponent {
     private void initFramework() {
         FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), new Storage(), new MessageManager(project), new TaskFactory(this), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
+        framework.start();
     }
 
     private Frame getMainFrame() {
