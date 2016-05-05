@@ -11,7 +11,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.tagmycode.sdk.model.Snippet;
 
-public class CreateSnippetAction extends AnAction {
+public class AddSnippetAction extends AnAction {
 
     @Override
     public void actionPerformed(final AnActionEvent e) {

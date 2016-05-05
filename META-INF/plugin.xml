@@ -48,12 +48,12 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="createSnippet" class="com.tagmycode.intellij.CreateSnippetAction" text="Create snippet..."
-                description="Create a new snippet based on current opened file" icon="icons/create16.png">
+        <action id="createSnippet" class="com.tagmycode.intellij.AddSnippetAction" text="TagMyCode Add Snippet..."
+                description="Add a new snippet based on current opened file" icon="icons/create16.png">
             <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="OpenInSceneBuilder"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt T"/>
         </action>
-        <action id="searchSnippetsAction" class="com.tagmycode.intellij.SearchSnippetsAction" text="Search snippets..."
+        <action id="searchSnippetsAction" class="com.tagmycode.intellij.SearchSnippetsAction" text="TagMyCode Search Snippets..."
                 description="Search snippets" icon="icons/search16.png">
             <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="OpenInSceneBuilder"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift SPACE"/>
@@ -61,7 +61,6 @@
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <projectConfigurable instance="com.tagmycode.intellij.settings.TagMyCodeConfigurable"/>
         <toolWindow id="TagMyCode" icon="icons/tagmycode13.png" anchor="bottom"
                     factoryClass="com.tagmycode.intellij.MainWindow">
         </toolWindow>
