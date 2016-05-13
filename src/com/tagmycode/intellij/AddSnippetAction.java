@@ -26,7 +26,7 @@ public class AddSnippetAction extends AnAction {
         assert editor != null;
         snippet.setTitle(getFile(editor.getDocument()).getName());
         snippet.setCode(getCode(editor));
-        tagMyCodeProject.getFramework().showNewSnippetDialog(snippet, null);
+        tagMyCodeProject.getFramework().showNewSnippetDialog(snippet);
     }
 
     private VirtualFile getFile(Document document) {
