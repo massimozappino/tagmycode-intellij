@@ -11,6 +11,7 @@ import com.tagmycode.sdk.authentication.TagMyCodeApiProduction;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class TagMyCodeProject implements ProjectComponent {
     private Project project;
@@ -34,7 +35,11 @@ public class TagMyCodeProject implements ProjectComponent {
     private void initFramework() {
         FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), new Storage(), new MessageManager(project), new TaskFactory(this), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
-        framework.start();
+        try {
+            framework.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         if (UIUtil.isUnderDarcula()) {
             SyntaxSnippetEditor.setThemeDark();
