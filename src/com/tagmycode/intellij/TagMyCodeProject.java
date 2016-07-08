@@ -8,6 +8,7 @@ import com.tagmycode.plugin.Framework;
 import com.tagmycode.plugin.FrameworkConfig;
 import com.tagmycode.plugin.gui.SyntaxSnippetEditor;
 import com.tagmycode.sdk.authentication.TagMyCodeApiProduction;
+import com.tagmycode.sdk.exception.TagMyCodeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -37,7 +38,7 @@ public class TagMyCodeProject implements ProjectComponent {
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
-        } catch (IOException e) {
+        } catch (IOException | TagMyCodeException e) {
             throw new RuntimeException(e);
         }
 
