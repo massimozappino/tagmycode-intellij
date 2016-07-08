@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.tagmycode.intellij</id>
     <name>TagMyCode</name>
-    <version>2.0</version>
+    <version>2.0.1</version>
     <vendor email="support@tagmycode.com" url="https://tagmycode.com">TagMyCode</vendor>
 
     <description><![CDATA[
@@ -10,13 +10,13 @@
     <br/>
     Features:<br/>
     * Add snippets: you can save your code snippets including description, language, and tags<br/>
-    * Snippets management (CRUD): snippets are stored locally and you can filter, sort, create, modify, edit or delete them directly from the IDE
+    * Snippets management (CRUD): snippets are stored locally and you can filter, sort, create, modify, edit or delete them directly from the IDE<br/>
     * Quick search: you can search your snippets and insert them directly into the document<br/>
     ]]>
     </description>
 
     <change-notes><![CDATA[
-    2.0 (released 2016-08-07)<br/>
+    2.0 (released 2016-07-08)<br/>
     * new user interface<br/>
     * list of snippets stored locally<br/>
     * syntax highlight powered by <a href="http://bobbylight.github.io/RSyntaxTextArea/">RSyntaxTextArea</a><br/>
