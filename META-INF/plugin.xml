@@ -24,14 +24,14 @@
     * filter snippets<br/>
     * quick search feature<br/>
     * insert selected snippet at cursor in document<br/>
-
+    <br/>
     1.1 (released 2014-10-04)<br/>
     * Switched authentication from OAuth 1.0a to OAuth 2<br/>
     * Console write also snippet title when new snippet is created (thanks to bejoy)<br/>
     * Fixed some minor bugs<br/>
     <br/>
     1.0 (released 2014-08-19)<br/>
-    * Added "Create snippet" feature
+    * Added "Create snippet" feature<br>
     * Added "Search snippets" feature<br/>
     ]]>
     </change-notes>
