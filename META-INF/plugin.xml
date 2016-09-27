@@ -8,7 +8,7 @@
     Provides the support for TagMyCode.<br/>
     This plugin allows you to manage your own snippets.<br/>
     <br/>
-    Features:<br/>
+    <b>Features:</b><br/>
     * Add snippets: you can save your code snippets including description, language, and tags<br/>
     * Snippets management (CRUD): snippets are stored locally and you can filter, sort, create, modify, edit or delete them directly from the IDE<br/>
     * Quick search: you can search your snippets and insert them directly into the document<br/>
@@ -16,7 +16,7 @@
     </description>
 
     <change-notes><![CDATA[
-    2.0 (released 2016-07-08)<br/>
+    <b>2.0 (released 2016-07-08)</b><br/>
     * new user interface<br/>
     * list of snippets stored locally<br/>
     * syntax highlight powered by <a href="http://bobbylight.github.io/RSyntaxTextArea/">RSyntaxTextArea</a><br/>
@@ -25,12 +25,12 @@
     * quick search feature<br/>
     * insert selected snippet at cursor in document<br/>
     <br/>
-    1.1 (released 2014-10-04)<br/>
+    <b>1.1 (released 2014-10-04)</b><br/>
     * Switched authentication from OAuth 1.0a to OAuth 2<br/>
     * Console write also snippet title when new snippet is created (thanks to bejoy)<br/>
     * Fixed some minor bugs<br/>
     <br/>
-    1.0 (released 2014-08-19)<br/>
+    <b>1.0 (released 2014-08-19)</b><br/>
     * Added "Create snippet" feature<br>
     * Added "Search snippets" feature<br/>
     ]]>

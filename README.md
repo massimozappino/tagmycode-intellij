@@ -20,10 +20,10 @@ To download all dependencies use Maven
 mvn clean package
 ```
 
-this command download all required dependencies into lib folder
+this command downloads all required dependencies into ```lib``` folder
 
 ###Consumer Id and Consumer secret###
-You need to create a Java class Secret.java into plugin/com/tagmycode/intellij
+You need to create a Java class ```Secret.java``` into ```plugin/com/tagmycode/intellij```
 
 ```java
 package com.tagmycode.intellij;
