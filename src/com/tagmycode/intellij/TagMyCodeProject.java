@@ -7,12 +7,17 @@ import com.intellij.util.ui.UIUtil;
 import com.tagmycode.plugin.Framework;
 import com.tagmycode.plugin.FrameworkConfig;
 import com.tagmycode.plugin.gui.SyntaxSnippetEditor;
+import com.tagmycode.sdk.DbService;
+import com.tagmycode.sdk.SaveFilePath;
 import com.tagmycode.sdk.authentication.TagMyCodeApiProduction;
 import com.tagmycode.sdk.exception.TagMyCodeException;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
+import java.awt.Frame;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.sql.SQLException;
 
 public class TagMyCodeProject implements ProjectComponent {
     private Project project;
@@ -26,25 +31,48 @@ public class TagMyCodeProject implements ProjectComponent {
     public void initComponent() {
     }
 
-    public Framework getFramework() {
+    Framework getFramework() {
         if (framework == null) {
-            initFramework();
+            try {
+                initFramework();
+            } catch (SQLException | IOException e) {
+                framework.logError(e);
+            }
         }
         return framework;
     }
 
-    private void initFramework() {
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), new Storage(), new MessageManager(project), new TaskFactory(this), getMainFrame());
+    private void initFramework() throws SQLException, IOException {
+        DbService dbService = new DbService(new SaveFilePath(getOrCreateNamespace()));
+        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(project), new TaskFactory(this), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
-        } catch (IOException | TagMyCodeException e) {
+        } catch (TagMyCodeException e) {
             throw new RuntimeException(e);
         }
 
+        configureTheme();
+    }
+
+    private void configureTheme() {
         if (UIUtil.isUnderDarcula()) {
             SyntaxSnippetEditor.setThemeDark();
         }
+    }
+
+    @NotNull
+    private String getOrCreateNamespace() {
+        IntelliJProperties intelliJProperties = new IntelliJProperties();
+        String profile = intelliJProperties.read("profile");
+        if (profile.length() == 0) {
+            SecureRandom random = new SecureRandom();
+            profile = new BigInteger(130, random).toString(32);
+            intelliJProperties.write("profile", profile);
+            Framework.LOGGER.info("profile: " + profile);
+            intelliJProperties.write("profile", profile);
+        }
+        return "intellij-" + profile;
     }
 
     private Frame getMainFrame() {
@@ -52,7 +80,6 @@ public class TagMyCodeProject implements ProjectComponent {
     }
 
     public void disposeComponent() {
-        // TODO: insert component disposal logic here
     }
 
     @NotNull
