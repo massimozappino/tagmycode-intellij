@@ -16,7 +16,10 @@
     </description>
 
     <change-notes><![CDATA[
-    <b>2.0 (released 2016-07-08)</b><br/>
+    <b>2.0.1 (released 2017-03-25)</b><br/>
+    * fixed bug: when reload IDE TagMyCode plugin asks always for login
+    <br/>
+    <b>2.0.0 (released 2016-07-08)</b><br/>
     * new user interface<br/>
     * list of snippets stored locally<br/>
     * syntax highlight powered by <a href="http://bobbylight.github.io/RSyntaxTextArea/">RSyntaxTextArea</a><br/>
@@ -25,12 +28,12 @@
     * quick search feature<br/>
     * insert selected snippet at cursor in document<br/>
     <br/>
-    <b>1.1 (released 2014-10-04)</b><br/>
+    <b>1.1.0 (released 2014-10-04)</b><br/>
     * Switched authentication from OAuth 1.0a to OAuth 2<br/>
     * Console write also snippet title when new snippet is created (thanks to bejoy)<br/>
     * Fixed some minor bugs<br/>
     <br/>
-    <b>1.0 (released 2014-08-19)</b><br/>
+    <b>1.0.0 (released 2014-08-19)</b><br/>
     * Added "Create snippet" feature<br>
     * Added "Search snippets" feature<br/>
     ]]>
