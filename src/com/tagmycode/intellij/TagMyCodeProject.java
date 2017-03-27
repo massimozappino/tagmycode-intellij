@@ -44,14 +44,13 @@ public class TagMyCodeProject implements ProjectComponent {
 
     private void initFramework() throws SQLException, IOException {
         DbService dbService = new DbService(new SaveFilePath(getOrCreateNamespace()));
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(project), new TaskFactory(this), getMainFrame());
+        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(), new TaskFactory(this), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
         } catch (TagMyCodeException e) {
             throw new RuntimeException(e);
         }
-
         configureTheme();
     }
 
