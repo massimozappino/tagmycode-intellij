@@ -1,6 +1,8 @@
 package com.tagmycode.intellij;
 
+import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.ui.UIUtil;
@@ -44,7 +46,7 @@ public class TagMyCodeProject implements ProjectComponent {
 
     private void initFramework() throws SQLException, IOException {
         DbService dbService = new DbService(new SaveFilePath(getOrCreateNamespace()));
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(), new TaskFactory(this), getMainFrame());
+        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(), new TaskFactory(this), new IntelliJVersion(), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
