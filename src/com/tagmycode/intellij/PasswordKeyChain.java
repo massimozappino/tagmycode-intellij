@@ -1,56 +1,40 @@
 package com.tagmycode.intellij;
 
+import com.intellij.credentialStore.CredentialAttributes;
+import com.intellij.credentialStore.Credentials;
 import com.intellij.ide.passwordSafe.PasswordSafe;
-import com.intellij.ide.passwordSafe.PasswordSafeException;
-import com.intellij.openapi.project.Project;
 import com.tagmycode.plugin.IPasswordKeyChain;
 import com.tagmycode.plugin.exception.TagMyCodeGuiException;
+import org.jetbrains.annotations.NotNull;
 
 public class PasswordKeyChain implements IPasswordKeyChain {
 
-    private final PasswordSafe passwordSafe;
-    private final Project project;
-    private Class currentClass = PasswordKeyChain.class;
-
-    public PasswordKeyChain(Project project) {
-        this.project = project;
-        passwordSafe = PasswordSafe.getInstance();
-    }
+    private static final String TAGMYCODE_SERVICE_NAME = "tagmycode_plugin";
 
     @Override
     public void saveValue(String key, String value) throws TagMyCodeGuiException {
-        try {
-            passwordSafe.storePassword(project, currentClass, key, value);
-        } catch (Throwable e) {
-            throwExceptionRelatedToPasswordManager(e);
-        }
+        CredentialAttributes credentialAttributes = createCredentialAttributes(key);
+        Credentials credentials = new Credentials(key, value);
+
+        PasswordSafe.getInstance().set(credentialAttributes, credentials);
     }
 
     @Override
     public String loadValue(String key) throws TagMyCodeGuiException {
-        String value = "";
-        try {
-            value = passwordSafe.getPassword(project, currentClass, key);
-        } catch (Throwable e) {
-            throwExceptionRelatedToPasswordManager(e);
-        }
-        return value;
+        CredentialAttributes credentialAttributes = createCredentialAttributes(key);
+        Credentials credentials = PasswordSafe.getInstance().get(credentialAttributes);
+
+        return credentials != null ? credentials.getPasswordAsString() : "";
     }
 
     @Override
     public void deleteValue(String key) throws TagMyCodeGuiException {
-        try {
-            passwordSafe.removePassword(project, currentClass, key);
-        } catch (Throwable e) {
-            throwExceptionRelatedToPasswordManager(e);
-        }
+        saveValue(key, null);
     }
 
-    private void throwExceptionRelatedToPasswordManager(Throwable e) throws TagMyCodeGuiException {
-        String message = "Unable to access to the password manager";
-        if (e instanceof PasswordSafeException) {
-            message = e.getMessage();
-        }
-        throw new TagMyCodeGuiException(message);
+    @NotNull
+    private CredentialAttributes createCredentialAttributes(String key) {
+        return new CredentialAttributes(TAGMYCODE_SERVICE_NAME + "_" + key);
     }
+
 }
