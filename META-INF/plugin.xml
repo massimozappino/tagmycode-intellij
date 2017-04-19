@@ -20,10 +20,11 @@
     * added key shortcut to get focus on filter snippets box<br/>
     * added welcome panel<br/>
     * about dialog shows plugin version and framework version<br/>
+    * fixed bug: when reload IDE TagMyCode plugin on Windows it loose credentials<br/>
     <br/>
     <b>2.0.1 (released 2017-03-25)</b><br/>
     * moved error messages from dialog to IntelliJ Event Log<br/>
-    * fixed bug: when reload IDE TagMyCode plugin asks always for login<br/>
+    * moved storage from JSON to SQL<br/>
     <br/>
     <b>2.0.0 (released 2016-07-08)</b><br/>
     * new user interface<br/>
