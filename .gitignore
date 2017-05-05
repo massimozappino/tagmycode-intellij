@@ -10,3 +10,4 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 tagmycode-intellij.zip
+.idea/*

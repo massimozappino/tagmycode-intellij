@@ -9,6 +9,8 @@ import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.tagmycode.sdk.model.Language;
+import com.tagmycode.sdk.model.LanguagesCollection;
 import com.tagmycode.sdk.model.Snippet;
 
 public class AddSnippetAction extends AnAction {
@@ -24,9 +26,16 @@ public class AddSnippetAction extends AnAction {
 
         Snippet snippet = new Snippet();
         assert editor != null;
-        snippet.setTitle(getFile(editor.getDocument()).getName());
+        VirtualFile virtualFile = getFile(editor.getDocument());
+        snippet.setTitle(virtualFile.getName());
         snippet.setCode(getCode(editor));
+        snippet.setLanguage(findLanguage(tagMyCodeProject, virtualFile));
         tagMyCodeProject.getFramework().showNewSnippetDialog(snippet);
+    }
+
+    private Language findLanguage(TagMyCodeProject tagMyCodeProject, VirtualFile virtualFile) {
+        LanguagesCollection languages = tagMyCodeProject.getFramework().getData().getLanguages();
+        return new IntelliJFileToLanguage(languages).find(virtualFile);
     }
 
     private VirtualFile getFile(Document document) {
