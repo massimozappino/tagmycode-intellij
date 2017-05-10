@@ -16,7 +16,11 @@ public class IntelliJFileToLanguage {
     Language find(VirtualFile virtualFile) {
         String intellijCode = virtualFile.getFileType().getName().toLowerCase();
 
-        return languages.getByCode(extractCode(intellijCode));
+        Language foundLanguage = languages.findByCode(extractCode(intellijCode));
+        if (foundLanguage == null ) {
+            foundLanguage = languages.findByFileName(virtualFile.getName());
+        }
+        return foundLanguage;
     }
 
     @NotNull
