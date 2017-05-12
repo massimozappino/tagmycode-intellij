@@ -2,9 +2,11 @@ package com.tagmycode.intellij;
 
 
 import com.intellij.openapi.vfs.VirtualFile;
+import com.tagmycode.sdk.FileNameToLanguage;
 import com.tagmycode.sdk.model.Language;
 import com.tagmycode.sdk.model.LanguagesCollection;
 import org.jetbrains.annotations.NotNull;
+
 
 public class IntelliJFileToLanguage {
     private LanguagesCollection languages;
@@ -17,7 +19,7 @@ public class IntelliJFileToLanguage {
         String intellijCode = virtualFile.getFileType().getName().toLowerCase();
 
         Language foundLanguage = languages.findByCode(extractCode(intellijCode));
-        if (foundLanguage == null ) {
+        if (foundLanguage != null && foundLanguage.getCode().equals(FileNameToLanguage.TEXT)) {
             foundLanguage = languages.findByFileName(virtualFile.getName());
         }
         return foundLanguage;

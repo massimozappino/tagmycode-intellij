@@ -9,6 +9,8 @@
       <root url="file://$PROJECT_DIR$/../tagmycode-java-plugin-framework/example/src/main/java" />
       <root url="file://$PROJECT_DIR$/../tagmycode-java-plugin-framework/src/main/java" />
       <root url="file://$PROJECT_DIR$/../tagmycode-java-plugin-framework/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../tagmycode-java-sdk/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../tagmycode-java-sdk/src/test/java" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/target/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/target/lib" recursive="false" type="SOURCES" />
