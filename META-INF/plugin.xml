@@ -17,6 +17,7 @@
 
     <change-notes><![CDATA[
     <b>UNRELEASED</b><br/>
+     * snippets management works in offline mode<br/>
      * autodetect language on new snippet<br/>
     <br/>
     <b>2.0.2 (released 2017-04-22)</b><br/>
