@@ -1,9 +1,9 @@
 package com.tagmycode.intellij;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.Task;
 import com.tagmycode.plugin.AbstractTaskFactory;
+import com.tagmycode.plugin.operation.TagMyCodeAsynchronousOperation;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -15,17 +15,22 @@ public class TaskFactory extends AbstractTaskFactory {
     }
 
     @Override
-    public void create(final Runnable runnable, final String title) {
+    public void create(final TagMyCodeAsynchronousOperation operation, final Runnable runnable, final String title) {
+        final Thread thread = new Thread(runnable);
 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-            public void run() {
-                new Task.Backgroundable(tagMyCodeProject.getProject(), title, true) {
-                    public void run(@NotNull final ProgressIndicator indicator) {
-                        runnable.run();
+        new Task.Backgroundable(tagMyCodeProject.getProject(), title, true) {
+            public void run(@NotNull final ProgressIndicator indicator) {
+                thread.start();
+
+                while (thread.isAlive()) {
+                    if (indicator.isCanceled()) {
+                        thread.interrupt();
+                        indicator.cancel();
                     }
-                }.queue();
+                }
             }
-        });
+        }.queue();
+
     }
 
 }
