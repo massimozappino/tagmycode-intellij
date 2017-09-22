@@ -3,7 +3,6 @@ package com.tagmycode.intellij;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.Task;
 import com.tagmycode.plugin.AbstractTaskFactory;
-import com.tagmycode.plugin.operation.TagMyCodeAsynchronousOperation;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -15,7 +14,7 @@ public class TaskFactory extends AbstractTaskFactory {
     }
 
     @Override
-    public void create(final TagMyCodeAsynchronousOperation operation, final Runnable runnable, final String title) {
+    public void create(final Runnable runnable, final String title) {
         final Thread thread = new Thread(runnable);
 
         new Task.Backgroundable(tagMyCodeProject.getProject(), title, true) {
@@ -32,5 +31,4 @@ public class TaskFactory extends AbstractTaskFactory {
         }.queue();
 
     }
-
 }
