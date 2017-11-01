@@ -30,7 +30,7 @@ public class AddSnippetAction extends AnAction {
         snippet.setTitle(virtualFile.getName());
         snippet.setCode(getCode(editor));
         snippet.setLanguage(findLanguage(tagMyCodeProject, virtualFile));
-        tagMyCodeProject.getFramework().showNewSnippetDialog(snippet);
+        tagMyCodeProject.getFramework().showSnippetDialog(snippet);
     }
 
     private Language findLanguage(TagMyCodeProject tagMyCodeProject, VirtualFile virtualFile) {

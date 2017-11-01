@@ -6,14 +6,15 @@ import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.ui.UIUtil;
 import com.tagmycode.plugin.Framework;
 import com.tagmycode.plugin.FrameworkConfig;
-import com.tagmycode.plugin.gui.SyntaxSnippetEditor;
+import com.tagmycode.plugin.SyntaxSnippetEditorFactory;
+import com.tagmycode.plugin.exception.TagMyCodeStorageException;
 import com.tagmycode.sdk.DbService;
 import com.tagmycode.sdk.SaveFilePath;
 import com.tagmycode.sdk.authentication.TagMyCodeApiProduction;
 import com.tagmycode.sdk.exception.TagMyCodeException;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.Frame;
+import java.awt.*;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -56,7 +57,14 @@ public class TagMyCodeProject implements ProjectComponent {
 
     private void configureTheme() {
         if (UIUtil.isUnderDarcula()) {
-            SyntaxSnippetEditor.setThemeDark();
+            try {
+                if (framework.getStorageEngine().loadEditorTheme() == null) {
+                    framework.getSyntaxSnippetEditorFactory().setDefaultDarkTheme();
+                    framework.getStorageEngine().saveEditorTheme(SyntaxSnippetEditorFactory.THEME_STRING_DARK);
+                }
+            } catch (TagMyCodeStorageException ignored) {
+
+            }
         }
     }
 
@@ -65,6 +73,7 @@ public class TagMyCodeProject implements ProjectComponent {
         IntelliJProperties intelliJProperties = new IntelliJProperties();
         String profile = intelliJProperties.read("profile");
         if (profile.length() == 0) {
+            // TODO move to framework
             SecureRandom random = new SecureRandom();
             profile = new BigInteger(130, random).toString(32);
             intelliJProperties.write("profile", profile);
