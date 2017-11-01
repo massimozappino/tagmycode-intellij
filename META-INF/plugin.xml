@@ -21,8 +21,7 @@
     * autodetect language on new snippet<br/>
     * added settings dialog with editor theme and font size option<br/>
     * added title and description to snippet view<br/>
-    * added log4j.properties configuration<br/>
-    * log error if can't open web browser<br/>
+    * changed open browser class<br/>
     * text can be dragged into table to create a new snippet<br/>
     * snippets can be dragged directly into editor and the code are copied<br/>
     * added "save as file" feature<br/>
