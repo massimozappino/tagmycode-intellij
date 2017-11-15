@@ -45,7 +45,7 @@ public class TagMyCodeProject implements ProjectComponent {
 
     private void initFramework() throws SQLException, IOException {
         DbService dbService = new DbService(new SaveFilePath(getOrCreateNamespace()));
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(), dbService, new MessageManager(project), new TaskFactory(this), new IntelliJVersion(), getMainFrame());
+        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(project), new TaskFactory(this), new IntelliJVersion(), getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
