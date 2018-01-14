@@ -17,10 +17,10 @@
 
     <change-notes><![CDATA[
     <b>2.1.1 (released 2018-01-10)</b><br/>
-    * Quick Search dialog is now resizable
+    * Quick Search dialog is now resizable<br/>
     * fixed bug: NoClassDefFound CredentialAttributes<br/>
-    * fixed syntax highlight for PHP and HTML
-    * if refresh token is not valid user will be automatically logged out
+    * fixed syntax highlight for PHP and HTML<br/>
+    * if refresh token is not valid user will be automatically logged out<br/>
     <br/>
     <b>2.1.0 (released 2017-11-06)</b><br/>
     * snippets management works in offline mode<br/>
