@@ -15,7 +15,7 @@ import com.tagmycode.sdk.exception.TagMyCodeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.sql.SQLException;
@@ -44,8 +44,15 @@ public class TagMyCodeProject implements ProjectComponent {
     }
 
     private void initFramework() throws SQLException, IOException {
-        DbService dbService = new DbService(new SaveFilePath(getOrCreateNamespace()));
-        FrameworkConfig frameworkConfig = new FrameworkConfig(new PasswordKeyChain(project), dbService, new MessageManager(project), new TaskFactory(this), new IntelliJVersion(), getMainFrame());
+        SaveFilePath saveFilePath = new SaveFilePath(getOrCreateNamespace());
+        FrameworkConfig frameworkConfig = new FrameworkConfig(
+                saveFilePath,
+                new PasswordKeyChain(project),
+                new DbService(saveFilePath.getPath()),
+                new MessageManager(project),
+                new TaskFactory(this),
+                new IntelliJVersion(),
+                getMainFrame());
         framework = new Framework(new TagMyCodeApiProduction(), frameworkConfig, new Secret());
         try {
             framework.start();
@@ -88,6 +95,11 @@ public class TagMyCodeProject implements ProjectComponent {
     }
 
     public void disposeComponent() {
+        try {
+            framework.closeFramework();
+        } catch (TagMyCodeStorageException e) {
+            e.printStackTrace();
+        }
     }
 
     @NotNull
