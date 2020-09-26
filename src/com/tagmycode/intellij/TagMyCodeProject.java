@@ -1,6 +1,7 @@
 package com.tagmycode.intellij;
 
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.ide.util.projectWizard.ModuleBuilder;
+import com.intellij.openapi.module.ModuleType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.ui.UIUtil;
@@ -15,21 +16,17 @@ import com.tagmycode.sdk.exception.TagMyCodeException;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 
-public class TagMyCodeProject implements ProjectComponent {
-    private Project project;
+public class TagMyCodeProject extends ModuleBuilder {
+    private final Project project;
     private Framework framework;
 
     public TagMyCodeProject(Project project) {
         this.project = project;
-    }
-
-    @Override
-    public void initComponent() {
     }
 
     Framework getFramework() {
@@ -102,22 +99,13 @@ public class TagMyCodeProject implements ProjectComponent {
         }
     }
 
-    @NotNull
-    public String getComponentName() {
-        return "TagMyCodeProject";
-    }
-
-    public void projectOpened() {
-        // called when project is opened
-    }
-
-    public void projectClosed() {
-        // called when project is being closed
-    }
-
     public Project getProject() {
         return project;
     }
 
 
+    @Override
+    public ModuleType<?> getModuleType() {
+        return ModuleType.EMPTY; //or it could be other module type
+    }
 }

@@ -15,7 +15,7 @@ public class PasswordKeyChain implements IPasswordKeyChain {
     private final Project project;
     private final PasswordSafe passwordSafe;
 
-    private Class currentClass = PasswordKeyChain.class;
+    private final Class currentClass = PasswordKeyChain.class;
 
     public PasswordKeyChain(Project project) {
         this.project = project;
