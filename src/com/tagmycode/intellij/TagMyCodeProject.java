@@ -44,7 +44,7 @@ public class TagMyCodeProject extends ModuleBuilder {
         SaveFilePath saveFilePath = new SaveFilePath(getOrCreateNamespace());
         FrameworkConfig frameworkConfig = new FrameworkConfig(
                 saveFilePath,
-                new PasswordKeyChain(project),
+                new PasswordKeyChain(),
                 new DbService(saveFilePath.getPath()),
                 new MessageManager(project),
                 new TaskFactory(this),
