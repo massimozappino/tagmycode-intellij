@@ -23,7 +23,8 @@ mvn clean package
 this command downloads all required dependencies into ```lib``` folder
 
 Set the correct project compiler output: go to ```File``` -> ```Project Structure...``` -> ```Project``` -> ```Project compiler output``` and add the full **absolute** path, for example ```/home/user/projects/tagmycode-intellij/out```
-###Consumer Id and Consumer secret
+
+### Consumer Id and Consumer secret
 You need to create a Java class ```Secret.java``` into ```plugin/com/tagmycode/intellij```
 
 ```java
